@@ -60,23 +60,19 @@
                     return data;
                 }).DataTable(
                     {
-                        dom: 'Bfrtip',
+                        //dom: 'Bfrtip',
                         "lengthMenu": [[10, 50, 100, 150, 200, 500], [10, 50, 100, 150, 200, 500]],
                         buttons: [
                             { extend: 'excel', text: 'تصدير' },
                             'pageLength'
-                        ],
-                        lengthMenu: [
-                            [5, 10, 25, 50],
-                            ['5 صفوف', '10 صفوف', '25 صف', '50 صف']
                         ],
                         "ordering": false,
                         "serverSide": true,
                         "processing": true,
                         "paging": true,
                         "pageLength": 10,
-                        responsive: false,
-                        searching: false,
+                        responsive: true,
+                        searching: true,
                         "sAjaxSource": "/Home/GetAllProducts",
                         "aoColumns": [
                             {
