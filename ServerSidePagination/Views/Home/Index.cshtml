@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>product name</label>
+                <input type="text" id="ProductName" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="button" id="btnSearch" class="btn btn-success" value="search" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="table-responsive" style="direction:rtl">
+        <table cellpadding="0" cellspacing="0" class="dataTable table table-sm table-striped table-container"
+               id="productTbl">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>product name</th>
+                    <th>year</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+
+        $(document).ready(function () {
+
+            Loadtable();
+
+            $('#btnSearch').click(function () {
+                Loadtable();
+            });
+        });
+
+        var table;
+        function Loadtable() {
+            if ($.fn.DataTable.isDataTable('#productTbl')) {
+                table.ajax.reload();
+            }
+            else {
+                table = $('#productTbl').on('preXhr.dt', function (e, settings, data) {
+                    data.ProductName = $('#ProductName').val();
+                    return data;
+                }).DataTable(
+                    {
+                        dom: 'Bfrtip',
+                        "lengthMenu": [[10, 50, 100, 150, 200, 500], [10, 50, 100, 150, 200, 500]],
+                        buttons: [
+                            { extend: 'excel', text: 'تصدير' },
+                            'pageLength'
+                        ],
+                        lengthMenu: [
+                            [5, 10, 25, 50],
+                            ['5 صفوف', '10 صفوف', '25 صف', '50 صف']
+                        ],
+                        "ordering": false,
+                        "serverSide": true,
+                        "processing": true,
+                        "paging": true,
+                        "pageLength": 10,
+                        responsive: false,
+                        searching: false,
+                        "sAjaxSource": "/Home/GetAllProducts",
+                        "aoColumns": [
+                            {
+                                "mData": "Id"
+                            },
+                            {
+                                "mData": "ProductName"
+                            },
+                            {
+                                "mData": "ProductYear"
+                            },
+                            {
+                                "mData": "Price",
+                                //"render": function (data, type, full, meta) { return data ? moment(data).format('YYYY-MM-DD HH:mm') : ''; }
+                            },
+                        ],
+                        "language": {
+                            "sProcessing": "جارٍ التحميل...",
+                            "sLengthMenu": "أظهر _MENU_ مدخلات",
+                            "sZeroRecords": "لم يعثر على أية سجلات",
+                            "sInfo": "إظهار _START_ إلى _END_ من أصل _TOTAL_ مدخل",
+                            "sInfoEmpty": "يعرض 0 إلى 0 من أصل 0 سجل",
+                            "sInfoFiltered": "(منتقاة من مجموع _MAX_ مُدخل)",
+                            "sInfoPostFix": "",
+                            "sSearch": "ابحث:",
+                            "sUrl": "",
+                            "oPaginate": {
+                                "sFirst": "الأول",
+                                "sPrevious": "السابق",
+                                "sNext": "التالي",
+                                "sLast": "الأخير"
+                            }
+                        }
+                    }
+                );
+            }
+        }
+
+    </script>
+}
