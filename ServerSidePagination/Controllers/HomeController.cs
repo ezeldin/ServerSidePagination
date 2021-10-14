@@ -49,5 +49,22 @@ namespace ServerSidePagination.Controllers
 
             return View();
         }
+        
+        BasicHttpBinding basicHttpBinding = new BasicHttpBinding();
+EndpointAddress endpointAddress = 
+                new EndpointAddress("https://localhost:8082/OrderManagement/OrderManagement.svc");
+OrderManagementClient wcfClient = 
+                new OrderManagementClient(basicHttpBinding, endpointAddress);
+
+//wcfClient.ClientCredentials.ServiceCertificate.SslCertificateAuthentication
+//is need to be set for Https certificate authentication
+wcfClient.ClientCredentials.ServiceCertificate.SslCertificateAuthentication =
+	new X509ServiceCertificateAuthentication()
+	{
+		CertificateValidationMode = X509CertificateValidationMode.None,
+		RevocationMode = System.Security.Cryptography.X509Certificates.X509RevocationMode.NoCheck
+	};
+
+var result = wcfClient.GetOrderByID(1);
     }
 }
