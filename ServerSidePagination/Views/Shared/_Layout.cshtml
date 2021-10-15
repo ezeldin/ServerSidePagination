@@ -29,6 +29,13 @@
         </div>
     </div>
     <div class="container body-content">
+
+        <div class="modal-busy" id="loader" style="display: none">
+            <div class="center-busy" id="test-git">
+                <img src="~/Content/img/spinner.gif" />
+            </div>
+        </div>
+
         @RenderBody()
         <hr />
         <footer>
@@ -39,6 +46,20 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/DataTables-1.11.2/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document)
+            .ajaxStart(function () {
+                $('#loader').show();
+            })
+            .ajaxStop(function () {
+                $('#loader').hide();
+            }).ajaxError(function (event, xhr, ajaxOptions, thrownError) {
+                if (xhr.status == 403) {
+                }
+                else if (xhr.status == 401) {
+                }
+            });
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
