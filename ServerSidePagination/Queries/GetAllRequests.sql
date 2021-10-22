@@ -10,7 +10,12 @@ From production.products
 WHERE (
          product_name = @ProductName
          OR @ProductName IS NULL
-      )      
+      ) 
+      and
+      (
+         list_price = @Price
+         OR @Price IS NULL
+      )
 ), 
 Count_CTE 
 AS 
