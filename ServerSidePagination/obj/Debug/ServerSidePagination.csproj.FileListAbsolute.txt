@@ -59,3 +59,11 @@ D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\obj\Debug\Server
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Queries\GetAllRequests.sql
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Queries\GetAllRequests2.sql
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Queries\GetAllRequests3.sql
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Queries\ExportProductsToExcel.sql
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ClosedXML.dll
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\DocumentFormat.OpenXml.dll
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ExcelNumberFormat.dll
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ClosedXML.pdb
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ClosedXML.xml
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\DocumentFormat.OpenXml.xml
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ExcelNumberFormat.xml
