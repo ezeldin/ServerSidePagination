@@ -1,11 +1,13 @@
 ﻿using ClosedXML.Excel;
 using Models;
+using Rotativa;
 using Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -97,6 +99,13 @@ namespace ServerSidePagination.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> PrintProduct(long id)
+        {
+            var product =await _productService.ExportToPdf(id);
+            return new ViewAsPdf(product);
         }
     }
 }

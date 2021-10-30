@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Services
 {
@@ -46,6 +47,22 @@ namespace Services
                         @ProductName = param.ProductName,
                         @Price = param.Price
                     }, null, true, 60 * 3);
+
+                return result.ToList();
+            }
+        }
+
+        public async Task<List<ProductDto>> ExportToPdf(long id)
+        {
+            var query = new StringBuilder();
+            query.AppendQuery("ExportProductsToPDF.sql");
+            using (var connection = new SqlConnection(Utility.GetConnectionString()))
+            {
+                connection.Open();
+                var result = await connection.QueryAsync<ProductDto>(query.ToString()
+                    , new
+                    {
+                    }, null, 60 * 3);
 
                 return result.ToList();
             }
