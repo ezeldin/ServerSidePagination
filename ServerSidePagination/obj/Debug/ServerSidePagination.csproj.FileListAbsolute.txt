@@ -67,3 +67,5 @@ D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ClosedXML.pd
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ClosedXML.xml
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\DocumentFormat.OpenXml.xml
 D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\ExcelNumberFormat.xml
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Queries\ExportProductsToPDF.sql
+D:\WorkSpace\Training\ServerSidePagination\ServerSidePagination\bin\Rotativa.dll

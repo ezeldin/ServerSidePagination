@@ -24,6 +24,8 @@
                 <input type="button" id="btnExport" class="btn btn-info" value="Export" />
             </div>
 
+            <div style="text-align:right">@Html.ActionLink("PrintAll", "Home")</div>
+
             <hr />
         </div>
     </div>
@@ -38,6 +40,7 @@
                     <th>product name</th>
                     <th>year</th>
                     <th>price</th>
+                    <th>print</th>
                 </tr>
             </thead>
             <tbody>
@@ -112,6 +115,12 @@
                             {
                                 "mData": "Price",
                                 //"render": function (data, type, full, meta) { return data ? moment(data).format('YYYY-MM-DD HH:mm') : ''; }
+                            },
+                            {
+                                "data": "Id", orderable: false, "render": function (data, type, full, meta) {
+                                    return "<a alt='Print' id='" + data + "' href='/Home/PrintProduct?Id=" + data + "' style='cursor: pointer;' target='_blank' rel='noopener noreferrer' ><i class='fa fa-print fa-2x '>print</i></a>";
+
+                                }
                             },
                         ],
                         "language": {
