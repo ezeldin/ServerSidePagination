@@ -1,0 +1,184 @@
+﻿
+@model MOJ.Accounting.Application.UI.Web.ViewModels.PayableInvoice.PayableInvoicePrint
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl" lang="ar">
+
+<head>
+    <title>Receivable Invoice</title>
+    <link href="~/AppContent/css/bootstrap.min.css" rel="stylesheet">
+
+    <style media="screen">
+        body {
+            font-family: 'Segoe UI','Microsoft Sans Serif',sans-serif;
+        }
+
+        .from {
+            float: right;
+        }
+
+        .fromto {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #e8e5e5;
+            border-radius: 5px;
+            margin-right: 5px;
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+
+        .fromtocontent {
+            margin: 5px;
+            margin-right: 5px;
+        }
+
+        .panel {
+            background-color: #e8e5e5;
+            padding: 7px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                @*Header*@
+                <div class="row">
+
+                    <div class="col-md-4">
+                        @DateTime.Now.ToString("tt HH:mm  yyyy-MMM-dd")
+                    </div>
+
+                    @*logo*@
+                    <div class="col-md-4">
+                        <header style="text-align:center">
+                            <div class="logo">
+                                <img src="~/Content/images/MOJLogo.png" alt="generic business logo" height="80" width="60" />
+                            </div>
+                        </header>
+                    </div>
+
+                    <div class="col-md-4">
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <p style="font-weight:bold;font-size:20px;text-align:center;text-decoration: underline;" class="lead">تفاصيل الفاتورة</p>
+                </div>
+
+                <br />
+                @*Invoice*@
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="fromto from">
+                                <div class="panel">رقم الفاتورة :</div><div class="fromtocontent"><span>@Model.InvoiceNumber</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">الذمة الدائنة :</div><div class="fromtocontent"><span>@Model.PayableName</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">حالة الفاتورة :</div><div class="fromtocontent"><span>@Model.Status</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">تاريخ الفاتورة :</div><div class="fromtocontent"><span>@Model.CreatedOn</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">جوال الذمة الدائنة :</div><div class="fromtocontent"><span>@Model.PayableMobile</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">بريد الذمة الدائنة :</div><div class="fromtocontent"><span>@Model.PayableEmail</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">مدينة الذمة الدائنة :</div><div class="fromtocontent"><span>@Model.PayableCity</span></div>
+                            </div>
+                            <div class="fromto from">
+                                <div class="panel">عنوان الذمة الدائنة :</div><div class="fromtocontent"><span>@Model.PayableAddress</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @*Invoice Details*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+
+                            <thead>
+                                <tr class="table-success">
+                                    <th>
+                                        الوصف
+                                    </th>
+                                    <th>
+                                        الكمية
+                                    </th>
+                                    <th>
+                                        السعر
+                                    </th>
+                                    <th>
+                                        الإجمالي
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tfoot class="table-warning">
+                                <tr>
+                                    <td>
+                                        إجمالي الفاتورة:
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        @Model.InvoiceDetails.Sum(x => x.GrossAmount).ToString("0.00")
+                                    </td>
+                                </tr>
+                            </tfoot>
+
+                            <tbody>
+                                @foreach (var item in Model.InvoiceDetails)
+                                {
+                                    <tr>
+                                        <td>@item.Description</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Price.ToString("0.00")</td>
+                                        <td>@item.GrossAmount.ToString("0.00")</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <div class="fromto from" style="float:right">
+                    <div class="panel">توقيع المحاسب</div><div class="fromtocontent"><span>.............................</span></div>
+                </div>
+                <div class="fromto from" style="float:left">
+                    <div class="panel">توقيع المدير المالي</div><div class="fromtocontent"><span>.............................</span></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="~/AppContent/js/jquery-3.3.1.min.js"></script>
+    <script src="~/AppContent/js/bootstrap.min.js"></script>
+</body>
+</html>
