@@ -146,6 +146,8 @@
     <Compile Include="Models\ProductDto.cs" />
     <Compile Include="Models\ProductParams.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\ServiceLogger.cs" />
+    <Compile Include="Models\SysJobs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ProductService.cs" />
   </ItemGroup>
