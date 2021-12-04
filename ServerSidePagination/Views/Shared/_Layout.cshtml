@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     <link href="~/Scripts/DataTables-1.11.2/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="~/Scripts/datepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -43,7 +44,9 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @*<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>*@
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/DataTables-1.11.2/js/jquery.dataTables.min.js"></script>
     <script>
@@ -61,5 +64,10 @@
             });
     </script>
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/datepicker/moment/moment.min.js"></script>
+    <script src="~/Scripts/datepicker/moment/moment-with-locales.js"></script>
+    <script src="~/Scripts/datepicker/moment/moment-hijri.js"></script>
+    <script src="~/Scripts/datepicker/bootstrap-hijri-datetimepicker.js"></script>
 </body>
 </html>
