@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿//using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
@@ -6,29 +6,29 @@ using System.Threading.Tasks;
 
 namespace FinancialExecution.Reconcil.Web.Utils
 {
-    public class JsonResponseResult : JsonResult
-    {
-        private readonly HttpStatusCode _statusCode;
+    //public class JsonResponseResult : JsonResult
+    //{
+    //    private readonly HttpStatusCode _statusCode;
 
-        public JsonResponseResult(HttpStatusCode statusCode, object value)
-            : base(value)
-        {
-            _statusCode = statusCode;
-        }
+    //    public JsonResponseResult(HttpStatusCode statusCode, object value)
+    //        : base(value)
+    //    {
+    //        _statusCode = statusCode;
+    //    }
 
-        public override async Task ExecuteResultAsync(ActionContext context)
-        {
-            context.HttpContext.Response.StatusCode = (int)_statusCode;
-            await base.ExecuteResultAsync(context);
-        }
+    //    public override async Task ExecuteResultAsync(ActionContext context)
+    //    {
+    //        context.HttpContext.Response.StatusCode = (int)_statusCode;
+    //        await base.ExecuteResultAsync(context);
+    //    }
 
-        public override void ExecuteResult(ActionContext context)
-        {
-            context.HttpContext.Response.StatusCode = (int)_statusCode;
+    //    public override void ExecuteResult(ActionContext context)
+    //    {
+    //        context.HttpContext.Response.StatusCode = (int)_statusCode;
 
-            base.ExecuteResult(context);
-        }
-    }
+    //        base.ExecuteResult(context);
+    //    }
+    //}
 
     public static class FormatApiContent
     {
